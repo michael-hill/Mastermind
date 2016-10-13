@@ -70,6 +70,20 @@ class Mastermind
     end
   end
 
+  def start_game
+    @secret = generate_secret
+    @started = true
+    @guess_counter = 0
+    start_message
+    start_timer
+    process_input(user_input)
+  end
+
+  def quit_game
+    quit_message
+    abort
+  end
+
   def game_play(guess)
     guess_array = guess.chars
     correct_positions = compare_positions(secret, guess_array)
@@ -86,20 +100,6 @@ class Mastermind
   def read_directions
     incorrect_input
     process_input(user_input)
-  end
-
-  def start_game
-    @secret = generate_secret
-    @started = true
-    @guess_counter = 0
-    start_message
-    start_timer
-    process_input(user_input)
-  end
-
-  def quit_game
-    quit_message
-    abort
   end
 
   def game_instructions
@@ -124,17 +124,7 @@ class Mastermind
       valid_key.include?(letter)
     end
    end
-
-   def win(congrats)
-     stop_timer
-     x = game_timer
-     elapsed_time = time_taken(x)
-     picks = congrats.join
-     end_game_message(picks, elapsed_time, @guess_counter)
-     @started = false
-     process_input(user_input)
-   end
-
+\
   def compare_positions(secret, guess)
     @guess_counter += 1
     return win(guess) if guess == secret
@@ -150,7 +140,17 @@ class Mastermind
     correct_counter
   end
 
+  def win(congrats)
+    stop_timer
+    x = game_timer
+    elapsed_time = time_taken(x)
+    picks = congrats.join
+    end_game_message(picks, elapsed_time, @guess_counter)
+    @started = false
+    process_input(user_input)
+  end
+
 end
 
-mm = Mastermind.new
-mm.intro_message
+# mm = Mastermind.new
+# mm.intro_message

@@ -5,12 +5,11 @@ module Messages
   end
 
   def instructions_message
-    puts "A beginner sequence with four elements made up of: (r)ed,
-    (g)reen, (b)lue, and (y)ellow. Enter your four letter guess until you match the secret code, or enter (q)uit at any time to end the game."
+    puts "A beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Enter your four letter guess until you match the secret code, or enter (q)uit at any time to end the game."
   end
 
   def start_message
-    puts "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game. What's your guess:"
+    puts "I have generated a beginner sequence with four elements made up of:(r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.\nWhat's your guess:"
   end
 
   def quit_message

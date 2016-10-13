@@ -5,6 +5,16 @@ require './lib/mastermind'
 require './lib/messages'
 class MastermindTest < Minitest::Test
 
+  def test_it_exists
+    mm = Mastermind.new
+  end
+
+  def test_it_generates_secret
+    mm = Mastermind.new
+    assert mm.secret
+    assert_equal 4, mm.generate_secret.length
+  end
+
   def test_letters_are_valid
     mm = Mastermind.new
     guess_array = ["R", "G", "B", "Y"]
@@ -17,11 +27,14 @@ class MastermindTest < Minitest::Test
     assert_equal false, mm.valid_letters?(guess_array)
   end
 
-  def test_it_can_take_a_valid_guess
+  def test_it_does_not_take_invalid_guess
     mm = Mastermind.new
     guess = "RRY"
     assert_equal false, mm.valid_guess?(guess)
+  end
 
+    def test_it_can_take_a_valid_guess
+    mm = Mastermind.new
     guess = "BRGY"
     assert_equal true, mm.valid_guess?(guess)
   end
