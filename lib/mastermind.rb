@@ -123,8 +123,8 @@ class Mastermind
     guess_array.all? do |letter|
       valid_key.include?(letter)
     end
-   end
-\
+  end
+
   def compare_positions(secret, guess)
     @guess_counter += 1
     return win(guess) if guess == secret
@@ -152,5 +152,5 @@ class Mastermind
 
 end
 
-# mm = Mastermind.new
-# mm.intro_message
+mm = Mastermind.new
+mm.intro_message
